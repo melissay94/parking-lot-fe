@@ -1,0 +1,12 @@
+#footer {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  justify-content: space-evenly;
+}
+
+#footer a {
+  color: var(--main-highlight-color);
+}
+
+
