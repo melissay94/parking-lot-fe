@@ -7,6 +7,12 @@ export default function LotList() {
   const lotCards = [{
     title: "Hello World",
     description: "Test card to see if layout is working"
+  }, {
+    title: "Hello World",
+    description: "Test card to see if layout is working"
+  },{
+    title: "Hello World",
+    description: "Test card to see if layout is working"
   }];
 
   return(

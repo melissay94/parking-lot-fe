@@ -5,11 +5,12 @@ import {
   CardText,
   Button
 } from 'reactstrap';
+import "../styles/ListItem.css";
 
 export default function LotCard({ card }) {
   
   return (
-    <Card body>
+    <Card body className="list-item">
       <CardTitle>{card ? card.title : "Title"}</CardTitle>
       <CardText>{card ? card.description : ""}</CardText>
       <Button>Go to Lot</Button>
