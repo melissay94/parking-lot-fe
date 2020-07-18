@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 import './components/Content';
-import './App.css';
+import './styles/App.css';
 import NavBar from './components/NavBar';
 import Content from './components/Content';
 import Footer from './components/Footer';
@@ -16,7 +16,7 @@ const GET_IS_LOGGEDIN = gql`{
 function App() {
   const { data } = useQuery(GET_IS_LOGGEDIN);
 
-  const nav = true ? <NavBar user={null} /> : null;
+  const nav = false ? <NavBar user={null} /> : null;
   
   return (
     <Router>

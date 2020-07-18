@@ -2,6 +2,7 @@ import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
 
 import AccountForms from '../components/AccountForms';
+import "../styles/Landing.css";
 
 export default function Landing(props) {
 
@@ -13,7 +14,7 @@ export default function Landing(props) {
           <p className='lead'>A collaborative question answering experience for classes everywhere.</p>
         </Container>
       </Jumbotron>
-      <AccountForms />
+      <AccountForms className="landing-forms" />
     </div>
   );
 }

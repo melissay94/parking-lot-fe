@@ -17,6 +17,7 @@ import  {
   Input,
   Button
 } from 'reactstrap';
+import "../styles/Navigation.css";
 
 export default function NavBar({ user }) {
 
