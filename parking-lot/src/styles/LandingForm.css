@@ -10,19 +10,7 @@
 
 .landing-form button {
   width: 100%;
-  color: var(--main-bg-color);
-  font-weight: bold;
-  background-color: var(--main-interactive-color);
-  border: none;
   margin: 12px 8.33%;
-}
-
-.landing-form button:hover, .landing-form button:focus, .landing-form button:active {
-  color: var(--main-bg-color);
-  font-weight: bold;
-  border: none;
-  background-color: #DC143D;
-  box-shadow: 0 0 0 .2rem rgba(220, 20, 61, 0.5);
 }
 
 
