@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function Search(props) {
   return(
-    <div>Hello</div>
+    <div className="content">Hello</div>
   );
 }

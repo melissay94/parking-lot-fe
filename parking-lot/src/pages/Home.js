@@ -6,7 +6,7 @@ import LotList from '../components/LotList';
 
 export default function Home(props) {
   return(
-    <div>
+    <div className="content">
       <NavBar user={null} />
       <h1>My Lots</h1>
       <Button>Create Lot</Button>

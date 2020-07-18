@@ -7,7 +7,7 @@ import "../styles/Landing.css";
 export default function Landing(props) {
 
   return(
-    <div id='landing'>
+    <div id='landing' className="content">
       <Jumbotron fluid>
         <Container fluid>
           <h1 className='display-3'>Parking Lot</h1>

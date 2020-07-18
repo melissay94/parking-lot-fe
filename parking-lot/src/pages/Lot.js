@@ -23,7 +23,7 @@ export default function Lot() {
 
   // For future: Code should only show on the page if the current user is the creator of the lot
   return(
-    <div>
+    <div className="content">
       <h1>{exampleLot.title}</h1>
       <h4>{exampleLot.description}</h4>
       <h6>{exampleLot.author}</h6>
