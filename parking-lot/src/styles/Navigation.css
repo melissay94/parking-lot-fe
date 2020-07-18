@@ -51,3 +51,19 @@
   align-self: center;
   color: var(--main-bg-color);
 }
+
+@media only screen and (max-width: 856px) {
+  .user-name {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-bar {
+    align-items: flex-start;
+  }
+  .nav-search {
+    margin-left: 0;
+    width: auto;
+  }
+}
