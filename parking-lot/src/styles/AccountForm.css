@@ -1,0 +1,34 @@
+.account-tabs {
+  margin: 5%;
+  border: 4px solid var(--main-text-color);
+  border-radius: .25rem;
+  padding: 16px 0;
+}
+
+.account-tabs ul {
+  border-color: var(--main-text-color);
+  border-width: 4px;
+  justify-content: space-evenly;
+}
+
+.account-tabs .nav-item {
+  color: var(--main-text-color);
+}
+
+.account-tabs .nav-item .active {
+  color: var(--main-bg-color);
+  background-color: var(--main-text-color);
+}
+
+.account-tabs .nav-item .nav-link {
+  padding: .5rem 5rem;
+}
+
+.form-holder {
+  padding: 8px;
+}
+
+.form-row {
+  margin: 16px 4px;
+}
+

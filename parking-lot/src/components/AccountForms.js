@@ -4,6 +4,7 @@ import classnames from 'classnames';
 
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import "../styles/AccountForm.css";
 
 export default function AccountForms() {
 
@@ -18,7 +19,7 @@ export default function AccountForms() {
   return (
     <div className='account-tabs'>
       <Nav tabs>
-        <NavItem>
+        <NavItem className="first-tab">
           <NavLink 
             className={classnames({ active: activeTab === '1' })}
             onClick={ () => { toggle('1'); } }>
@@ -33,7 +34,7 @@ export default function AccountForms() {
           </NavLink>
         </NavItem>
       </Nav>
-      <TabContent activeTab={activeTab}>
+      <TabContent activeTab={activeTab} className="form-holder">
         <TabPane tabId='1'>
           <SignupForm />
         </TabPane>
