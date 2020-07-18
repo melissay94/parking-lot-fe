@@ -25,12 +25,12 @@ export default function NavBar({ user }) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Navbar color="dark" dark expand="md">
+    <Navbar className="navigation" expand="md">
       <NavbarBrand href="/">Parking Lot</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="mr-auto" navbar>
-          <NavItem>
+        <Nav navbar className="nav-bar">
+          <NavItem className="nav-search">
             <Form>
               <FormGroup row>
                 <Col sm={9}>
@@ -42,29 +42,29 @@ export default function NavBar({ user }) {
               </FormGroup>
             </Form>
           </NavItem>
-          <NavItem>
+          <NavItem className="user-dropdown">
             <Row>
-              <Col sm={2}>
+              <Col sm={3}>
                 <img src={ user ? user.img : 'http://www.placekitten.com/g/50/50'} alt='user picture' />
               </Col>
-              <Col sm={10}>
+              <Col sm={9} className="user-name">
                 <h4>{user ? user.name : "Current User"}</h4>
               </Col>
             </Row>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>
+                  My Profile
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
+                  Sign Out
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
           </NavItem>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-            </DropdownToggle>
-            <DropdownMenu right>
-              <DropdownItem>
-                My Profile
-              </DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>
-                Sign Out
-              </DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
         </Nav>
       </Collapse>
     </Navbar>

@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+:root {
+  --main-bg-color: #011936;
+  --main-text-color: #F4FFFD;
+  --main-highlight-color: #FFCB18;
+  --main-interactive-color: #ED254E; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navigation {
+  background-color: var(--main-text-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar-brand {
+  color: var(--main-bg-color);
+  font-weight: bold;
+}
+
+.navbar-toggler {
+  border-color: var(--main-bg-color);
+}
+
+.navbar-toggler-icon {
+  background-image: url( "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(1, 25, 54)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
+}
+
+.nav-bar {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-search {
+  width: 25vw;
+  margin: 8px;
+  margin-left: 25%;
+}
+
+.nav-search button {
+  color: var(--main-bg-color);
+  font-weight: bold;
+  background-color: var(--main-interactive-color);
+  border: none;
+}
+
+.nav-search button:hover, .nav-search button:focus, .nav-search button:active, .btn-secondary:not(:disabled):not(.disabled):active {
+  color: var(--main-bg-color);
+  font-weight: bold;
+  border: none;
+  background-color: #DC143D;
+  box-shadow: 0 0 0 .2rem rgba(220, 20, 61, 0.5);
+}
+
+.form-group {
+  margin-bottom: 0;
+}
+
+.user-dropdown {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.user-dropdown img {
+  border-radius: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user-dropdown a {
+  color: var(--main-bg-color);
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0.8em;
+}
+
+.user-name {
+  align-self: center;
+  color: var(--main-bg-color);
 }
