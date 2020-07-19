@@ -25,7 +25,7 @@ export default function Entry(props) {
         <h1>{testEntry.name}</h1>
         <h6>Posted on {testEntry.datePosted} by {testEntry.author}</h6>
       </div>
-      <p>{testEntry.description}</p>
+      <p className="body-text">{testEntry.description}</p>
       <CommentList list={testEntry.comments} />
     </div>
   );

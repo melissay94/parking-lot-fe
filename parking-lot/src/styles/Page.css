@@ -23,4 +23,9 @@
   padding-right: 2em;
 }
 
+.body-text {
+  margin: 24px 0;
+  font-size: larger;
+  font-weight: 500;
+}
 

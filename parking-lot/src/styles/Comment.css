@@ -4,6 +4,7 @@
 
 .comment-list .card-body {
   padding: 0;
+  background-color: var(--main-text-color);
 }
 
 .comment-list .card-body .card-text {
