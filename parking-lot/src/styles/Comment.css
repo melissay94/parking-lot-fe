@@ -8,15 +8,22 @@
 
 .comment-list .card-body {
   padding: 0;
-  background-color: var(--main-text-color);
 }
 
 .comment-list .card-body .card-text {
   padding: 1em 1em 0 1em;
+  background-color: var(--main-text-color);
 }
 
 .comment-list .card-body .card-footer {
   text-align: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.comment-list .card-body .card-footer button {
+  margin-right: 1em;
 }
 
 .comment-form {
@@ -29,4 +36,10 @@
 .comment-form button {
   margin-top: 12px;
   float: right;
+}
+
+.delete-modal-body {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
