@@ -38,6 +38,7 @@ export default function NavBar({ user }) {
   const { input, handleInputChange } = useSearch(sendQuery);
 
   function logout () {
+    client.resetStore();
     client.writeQuery({ 
       query: gql`
         query getLoggedIn {

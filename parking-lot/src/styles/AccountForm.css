@@ -32,3 +32,6 @@
   margin: 16px 4px;
 }
 
+.error {
+  color: red;
+}
