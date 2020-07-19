@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 import LotList from '../components/LotList';
 import LotModal from '../components/LotModal';
 
-export default function Home(props) {
+export default function Home({ isLoggedIn }) {
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  if (!isLoggedIn) {
+    return <Redirect to="/" />
+  }
 
   return(
     <div className="content">

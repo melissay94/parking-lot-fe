@@ -1,7 +1,28 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useApolloClient } from '@apollo/react-hooks';
 import { Col, Button, Form, FormText, FormGroup, Label, Input } from 'reactstrap';
+import gql from 'graphql-tag';
 
 export default function SignupForm() {
+
+  const client = useApolloClient();
+  const history = useHistory();
+
+  const signup = () => {
+
+    client.writeQuery({ 
+      query: gql`
+        query getLoggedIn {
+          isLoggedIn
+        }
+      `,
+      data: { isLoggedIn: true }
+    });
+
+    history.push("/home");
+  }
+
   return(
     <Form className="landing-form">
       <h3>Let's Get Started!</h3>
@@ -46,7 +67,7 @@ export default function SignupForm() {
         <Label for='agreeCheck' check>By clicking this box, you agree that you are at least 18 years of age.</Label>
       </FormGroup>
       <div className="form-row">
-        <Button>Sign Up</Button>
+        <Button onClick={signup}>Sign Up</Button>
       </div>
     </Form>
   );

@@ -21,7 +21,14 @@ export default function LoginForm() {
   const [login, { data, loading }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
       localStorage.setItem('token', login.token);
-      client.writeData({ data: { isLoggedIn: true }});
+      client.writeQuery({ 
+        query: gql`
+          query getLoggedIn {
+            isLoggedIn
+          }
+        `,
+        data: { isLoggedIn: true }
+      });
     }, 
     onError(error) {
       setMessage(error.message);

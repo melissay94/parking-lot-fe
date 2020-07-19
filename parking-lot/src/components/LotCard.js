@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardTitle,
@@ -13,7 +14,9 @@ export default function LotCard({ card }) {
     <Card body className="list-item">
       <CardTitle>{card ? card.title : "Title"}</CardTitle>
       <CardText>{card ? card.description : ""}</CardText>
-      <Button>Go to Lot</Button>
+      <Button
+        tag={Link}
+        to={`/lot/${card ? card.id : 0}`}>Go to Lot</Button>
     </Card>
   );
 }

@@ -1,10 +1,15 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Jumbotron, Container } from 'reactstrap';
 
 import AccountForms from '../components/AccountForms';
 import "../styles/Landing.css";
 
-export default function Landing(props) {
+export default function Landing({ isLoggedIn }) {
+
+  if (isLoggedIn) {
+    return <Redirect to="/home" />
+  }
 
   return(
     <div id='landing' className="content">

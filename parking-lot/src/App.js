@@ -15,9 +15,10 @@ const GET_IS_LOGGEDIN = gql`{
 }`;
 
 function App() {
+
   const { data } = useQuery(GET_IS_LOGGEDIN);
 
-  const nav = true ? <NavBar user={null} /> : null;
+  const nav = data.isLoggedIn ? <NavBar user={null} /> : null;
   
   return (
     <Router>

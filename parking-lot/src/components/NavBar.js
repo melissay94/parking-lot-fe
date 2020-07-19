@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link, useHistory } from  'react-router-dom';
+import { useApolloClient } from '@apollo/react-hooks';
 import  {
   Collapse,
   Navbar,
@@ -18,17 +20,38 @@ import  {
   Input,
   Button
 } from 'reactstrap';
+import gql from 'graphql-tag';
+
+import useSearch from '../hooks/Search';
 import "../styles/Navigation.css";
 
 export default function NavBar({ user }) {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [, setQuery] = useState(null);
+  const client = useApolloClient();
+  const history = useHistory();
 
   const toggle = () => setIsOpen(!isOpen);
+  const sendQuery = () => { setQuery(input) };
+
+  const { input, handleInputChange } = useSearch(sendQuery);
+
+  function logout () {
+    client.writeQuery({ 
+      query: gql`
+        query getLoggedIn {
+          isLoggedIn
+        }
+      `,
+      data: { isLoggedIn: false }
+    });
+    history.push("/");
+  }
 
   return (
     <Navbar className="navigation" expand="md">
-      <NavbarBrand href="/">Parking Lot</NavbarBrand>
+      <NavbarBrand tag={Link} to="/">Parking Lot</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav navbar className="nav-bar">
@@ -36,10 +59,16 @@ export default function NavBar({ user }) {
             <Form>
               <FormGroup row>
                 <Col sm={9}>
-                  <Input type='search' placeholder="Look up Lot"></Input>
+                  <Input 
+                    type='search' 
+                    placeholder="Look up Lot" 
+                    value={input}
+                    onChange={handleInputChange} />
                 </Col>
                 <Col sm={3}>
-                  <Button>Search</Button>
+                  <Button
+                    tag={Link}
+                    to={`/search?query=${input}`}>Search</Button>
                 </Col>
               </FormGroup>
             </Form>
@@ -55,20 +84,22 @@ export default function NavBar({ user }) {
             </Row>
           </NavItem>
           <NavItem className="responsive-nav-item">
-            <NavLink>My Profile</NavLink>
+            <NavLink tag={Link} to="/profile">My Profile</NavLink>
           </NavItem>
           <NavItem className="responsive-nav-item">
-            <NavLink>Sign out</NavLink>
+            <NavLink onClick={logout}>Sign out</NavLink>
           </NavItem>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
             </DropdownToggle>
             <DropdownMenu right>
               <DropdownItem>
-                My Profile
+                <Link to="/profile">
+                  My Profile
+                </Link>
               </DropdownItem>
               <DropdownItem divider />
-              <DropdownItem>
+              <DropdownItem onClick={logout}>
                 Sign Out
               </DropdownItem>
             </DropdownMenu>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
@@ -21,13 +22,17 @@ const testEntry = {
   }]
 }
 
-export default function Entry(props) {
+export default function Entry({ isLoggedIn }) {
 
   const [deleteIsOpen, setDeleteIsOpen] = useState(false);
   const toggleDelete = () => setDeleteIsOpen(!deleteIsOpen);
 
   const [editIsOpen, setEditIsOpen] = useState(false);
   const toggleEdit = () => setEditIsOpen(!editIsOpen);
+
+  if (!isLoggedIn) {
+    return <Redirect to="/" />
+  }
 
   return(
     <div className="content">

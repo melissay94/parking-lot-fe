@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardTitle,
@@ -14,7 +15,7 @@ export default function EntryCard({ card }) {
       <CardTitle>{card ? card.name : "Name"}</CardTitle>
       <CardText>{card ? card.author : ""}</CardText>
       <CardText>{card ? card.comments : 0} Comments</CardText>
-      <Button>Go to Entry</Button>
+      <Button tag={Link} to={`/entry/${card ? card.id : 0}`}>Go to Entry</Button>
     </Card>
   );
 }

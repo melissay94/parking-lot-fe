@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 import EntryList from '../components/EntryList';
@@ -23,12 +24,17 @@ const exampleLot = {
   }]
 }
 
-export default function Lot() {
+export default function Lot({ isLoggedIn }) {
 
   const [showCode, setShowCode] = useState(false);
   const [deleteIsOpen, setDeleteIsOpen] = useState(false);
   const [editIsOpen, setEditIsOpen] = useState(false);
   const [addIsOpen, setAddIsOpen] = useState(false);
+
+  if (!isLoggedIn) {
+    return <Redirect to="/" />
+  }
+
 
   const revealCode = () => {
 

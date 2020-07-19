@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Redirect } from 'react-router-dom';
 
 import ResultList from '../components/ResultsList';
 
@@ -11,10 +11,14 @@ const testResults = [{
   name: "University Physics 101"
 }];
  
-export default function Search() {
+export default function Search({ isLoggedIn }) {
 
   const useQuery = () => new URLSearchParams(useLocation().search);
   const query = useQuery().get("query");
+
+  if (!isLoggedIn) {
+    return <Redirect to="/" />
+  }
 
   return(
     <div className="content">
