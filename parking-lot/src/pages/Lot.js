@@ -1,7 +1,6 @@
 import React from 'react';
 
 import EntryList from '../components/EntryList';
-import "../styles/Page.css";
 
 export default function Lot() {
 

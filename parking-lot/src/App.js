@@ -3,11 +3,12 @@ import { HashRouter as Router } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import './components/Content';
-import './styles/App.css';
 import NavBar from './components/NavBar';
 import Content from './components/Content';
 import Footer from './components/Footer';
+
+import './styles/App.css';
+import "./styles/Page.css";
 
 const GET_IS_LOGGEDIN = gql`{
   isLoggedIn @client

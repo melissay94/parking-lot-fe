@@ -1,6 +1,5 @@
 import React from 'react';
 import CommentList from '../components/CommentList';
-import "../styles/Page.css";
 
 const testEntry = {
   name: "Test Entry",

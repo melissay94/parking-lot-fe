@@ -6,6 +6,7 @@ import  {
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -35,7 +36,7 @@ export default function NavBar({ user }) {
             <Form>
               <FormGroup row>
                 <Col sm={9}>
-                  <Input type='search'>Look Up Lot</Input>
+                  <Input type='search' placeholder="Look up Lot"></Input>
                 </Col>
                 <Col sm={3}>
                   <Button>Search</Button>
@@ -43,29 +44,35 @@ export default function NavBar({ user }) {
               </FormGroup>
             </Form>
           </NavItem>
-          <NavItem className="user-dropdown">
+          <NavItem className="user">
             <Row>
               <Col sm={3}>
-                <img src={ user ? user.img : 'http://www.placekitten.com/g/50/50'} alt='user picture' />
+                <img src={ user ? user.img : 'http://www.placekitten.com/g/50/50'} alt='user profile' />
               </Col>
               <Col sm={9} className="user-name">
                 <h4>{user ? user.name : "Current User"}</h4>
               </Col>
             </Row>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  My Profile
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Sign Out
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
           </NavItem>
+          <NavItem className="responsive-nav-item">
+            <NavLink>My Profile</NavLink>
+          </NavItem>
+          <NavItem className="responsive-nav-item">
+            <NavLink>Sign out</NavLink>
+          </NavItem>
+          <UncontrolledDropdown nav inNavbar>
+            <DropdownToggle nav caret>
+            </DropdownToggle>
+            <DropdownMenu right>
+              <DropdownItem>
+                My Profile
+              </DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>
+                Sign Out
+              </DropdownItem>
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </Nav>
       </Collapse>
     </Navbar>

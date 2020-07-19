@@ -19,37 +19,44 @@
 
 .nav-bar {
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .nav-search {
   width: 25vw;
   margin: 8px;
-  margin-left: 25%;
+  margin-right: 10%;
 }
 
 .form-group {
   margin-bottom: 0;
 }
 
-.user-dropdown {
+.user {
   display: flex;
 }
 
-.user-dropdown img {
+.user img {
   border-radius: 50%;
-}
-
-.user-dropdown a {
-  color: var(--main-bg-color);
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0.8em;
 }
 
 .user-name {
   align-self: center;
   color: var(--main-bg-color);
+  padding-right: 0;
+}
+
+.dropdown {
+  align-self: center;
+}
+
+.dropdown a, .dropdown a:hover {
+  padding-left: 0;
+  color: var(--main-bg-color);
+}
+
+.responsive-nav-item {
+  display: none;
 }
 
 @media only screen and (max-width: 856px) {
@@ -60,10 +67,17 @@
 
 @media only screen and (max-width: 768px) {
   .nav-bar {
-    align-items: flex-start;
+    align-items: flex-end;
   }
   .nav-search {
-    margin-left: 0;
+    margin-right: 1rem;
     width: auto;
+  }
+  .responsive-nav-item {
+    display: inline-block;
+    color: var(--main-bg-color);
+  }
+  .dropdown, .user {
+    display: none;
   }
 }

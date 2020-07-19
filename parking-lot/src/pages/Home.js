@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 import LotList from '../components/LotList';
-import "../styles/Page.css";
 
 export default function Home(props) {
   return(
