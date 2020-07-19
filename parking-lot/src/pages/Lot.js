@@ -1,6 +1,7 @@
 import React from 'react';
 
 import EntryList from '../components/EntryList';
+import "../styles/Page.css";
 
 export default function Lot() {
 
@@ -24,9 +25,11 @@ export default function Lot() {
   // For future: Code should only show on the page if the current user is the creator of the lot
   return(
     <div className="content">
-      <h1>{exampleLot.title}</h1>
-      <h4>{exampleLot.description}</h4>
-      <h6>{exampleLot.author}</h6>
+      <div className="header">
+        <h1>{exampleLot.title}</h1>
+        <h4>{exampleLot.description}</h4>
+        <h6>{exampleLot.author}</h6>
+      </div>
       <EntryList entryCards={exampleLot.entries} />
     </div>
   );

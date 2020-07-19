@@ -2,11 +2,11 @@ import React from 'react';
 import { Button } from 'reactstrap';
 
 import LotList from '../components/LotList';
-import "../styles/Home.css";
+import "../styles/Page.css";
 
 export default function Home(props) {
   return(
-    <div className="content home">
+    <div className="content">
       <div className="header">
         <h1>My Lots</h1>
         <Button>Create Lot</Button>
