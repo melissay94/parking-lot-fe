@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentList from '../components/CommentList';
+import CommentForm from '../components/CommentForm';
 
 const testEntry = {
   name: "Test Entry",
@@ -26,6 +27,7 @@ export default function Entry(props) {
       </div>
       <p className="body-text">{testEntry.description}</p>
       <CommentList list={testEntry.comments} />
+      <CommentForm />
     </div>
   );
 }

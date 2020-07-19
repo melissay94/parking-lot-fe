@@ -2,6 +2,10 @@
   list-style-type: none;
 }
 
+.comment-list {
+  padding: 0;
+}
+
 .comment-list .card-body {
   padding: 0;
   background-color: var(--main-text-color);
@@ -13,4 +17,16 @@
 
 .comment-list .card-body .card-footer {
   text-align: end;
+}
+
+.comment-form {
+  width: 65%;
+  margin-top: 24px;
+  align-self: center;
+  margin-bottom: 24px;
+}
+
+.comment-form button {
+  margin-top: 12px;
+  float: right;
 }
