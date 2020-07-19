@@ -4,8 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-import "../styles/LandingForm.css";
-
 const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

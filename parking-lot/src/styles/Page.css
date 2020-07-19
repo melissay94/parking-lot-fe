@@ -1,7 +1,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .header {
@@ -12,6 +11,7 @@
   align-items: center;
   margin-bottom: 12px;
   padding-bottom: 12px;
+  align-self: center;
 }
 
 .header h1 {
@@ -27,5 +27,6 @@
   margin: 24px 0;
   font-size: larger;
   font-weight: 500;
+  text-align: center;
 }
 

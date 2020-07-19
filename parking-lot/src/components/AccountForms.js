@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import "../styles/AccountForm.css";
+import "../styles/LandingForm.css";
 
 export default function AccountForms() {
 

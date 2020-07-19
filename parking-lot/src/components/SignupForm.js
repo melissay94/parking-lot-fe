@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Button, Form, FormText, FormGroup, Label, Input } from 'reactstrap';
-import "../styles/LandingForm.css";
 
 export default function SignupForm() {
   return(
