@@ -14,7 +14,7 @@ export default function Content(props) {
       <Route path='/home' exact render={() => <Home isLoggedIn={props.isLoggedIn} />} />
       <Route path='/lot/:id' exact render={() => <Lot isLoggedIn={props.isLoggedIn} />} />
       <Route path='/search' exact render={() => <Search isLoggedIn={props.isLoggedIn} />} />
-      <Route path='/entry' exact render={() => <Entry isLoggedIn={props.isLoggedIn} />} />
+      <Route path='/entry/:id' exact render={() => <Entry isLoggedIn={props.isLoggedIn} />} />
       <Route path='*' component={ NotFound } />
     </Switch>
   );
