@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'reactstrap';
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
+import ConfirmDeleteModel from '../components/ConfirmDeleteModal';
+import PostModal from '../components/PostModal';
 
 const testEntry = {
   name: "Test Entry",
@@ -19,11 +22,24 @@ const testEntry = {
 }
 
 export default function Entry(props) {
+
+  const [deleteIsOpen, setDeleteIsOpen] = useState(false);
+  const toggleDelete = () => setDeleteIsOpen(!deleteIsOpen);
+
+  const [editIsOpen, setEditIsOpen] = useState(false);
+  const toggleEdit = () => setEditIsOpen(!editIsOpen);
+
   return(
     <div className="content">
       <div className="header">
         <h1>{testEntry.name}</h1>
         <h6>Posted on {testEntry.datePosted} by {testEntry.author}</h6>
+        <div className="controls">
+          <Button onClick={toggleEdit}>Edit Post</Button>
+          <PostModal isOpen={editIsOpen} toggle={toggleEdit} post={testEntry} isNew={false} />
+          <Button onClick={toggleDelete}>Delete Post</Button>
+          <ConfirmDeleteModel isOpen={deleteIsOpen} toggle={toggleDelete} modalQuestion="Delete Your Post?" />
+        </div>
       </div>
       <p className="body-text">{testEntry.description}</p>
       <CommentList list={testEntry.comments} />

@@ -12,8 +12,8 @@ export default function EntryCard({ card }) {
   return (
     <Card body className="list-item">
       <CardTitle>{card ? card.name : "Name"}</CardTitle>
-      <CardText>{card ? card.description : ""}</CardText>
-      <CardText>{card ? card.comments : 0}</CardText>
+      <CardText>{card ? card.author : ""}</CardText>
+      <CardText>{card ? card.comments : 0} Comments</CardText>
       <Button>Go to Entry</Button>
     </Card>
   );
