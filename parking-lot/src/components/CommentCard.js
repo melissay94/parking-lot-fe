@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Card, CardText, CardFooter, Button } from 'reactstrap';
 
-import EditCommentModal from './EditCommentModal';
-import ConfirmDeleteModal from './ConfirmDeleteModal';
+import EditCommentModal from './modals/EditCommentModal';
+import ConfirmDeleteModal from './modals/ConfirmDeleteModal';
 import "../styles/ListItem.css";
 
 export default function CommentList({ comment }) {

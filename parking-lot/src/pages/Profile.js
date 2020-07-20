@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
-import EditUserModal from '../components/EditUserModal';
-import EditPasswordModal from '../components/EditPasswordModal';
-import DeleteUserModal from '../components/DeleteUserModal';
+import useRedirect from '../hooks/useRedirect';
+import EditUserModal from '../components/modals/EditUserModal';
+import EditPasswordModal from '../components/modals/EditPasswordModal';
+import DeleteUserModal from '../components/modals/DeleteUserModal';
 import "../styles/Profile.css";
 
 export default function Profile({ isLoggedIn }) {
+
+  useRedirect(isLoggedIn, useHistory());
 
   const [editUserIsOpen, setEditUserIsOpen] = useState(false);
   const toggleEditUser = () => setEditUserIsOpen(!editUserIsOpen);
@@ -17,10 +20,6 @@ export default function Profile({ isLoggedIn }) {
 
   const [deleteUserIsOpen, setDeleteUserIsOpen] = useState(false);
   const toggleDeleteUser = () => setDeleteUserIsOpen(!deleteUserIsOpen);
-
-  if (!isLoggedIn) {
-    return <Redirect to="/" />
-  }
 
   const testUser = {
     name: "Test User",

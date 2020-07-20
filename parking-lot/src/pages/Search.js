@@ -1,6 +1,7 @@
 import React from 'react';
-import { useLocation, Redirect } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
+import useRedirect from '../hooks/useRedirect';
 import ResultList from '../components/ResultsList';
 
 const testResults = [{
@@ -13,12 +14,10 @@ const testResults = [{
  
 export default function Search({ isLoggedIn }) {
 
+  useRedirect(isLoggedIn, useHistory());
+
   const useQuery = () => new URLSearchParams(useLocation().search);
   const query = useQuery().get("query");
-
-  if (!isLoggedIn) {
-    return <Redirect to="/" />
-  }
 
   return(
     <div className="content">

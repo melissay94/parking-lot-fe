@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
+
+import useRedirect from '../hooks/useRedirect';
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
-import ConfirmDeleteModel from '../components/ConfirmDeleteModal';
-import PostModal from '../components/PostModal';
+import ConfirmDeleteModel from '../components/modals/ConfirmDeleteModal';
+import PostModal from '../components/modals/PostModal';
 
 const testEntry = {
   name: "Test Entry",
@@ -23,16 +25,14 @@ const testEntry = {
 }
 
 export default function Entry({ isLoggedIn }) {
+  
+  useRedirect(isLoggedIn, useHistory());
 
   const [deleteIsOpen, setDeleteIsOpen] = useState(false);
-  const toggleDelete = () => setDeleteIsOpen(!deleteIsOpen);
-
   const [editIsOpen, setEditIsOpen] = useState(false);
+  
   const toggleEdit = () => setEditIsOpen(!editIsOpen);
-
-  if (!isLoggedIn) {
-    return <Redirect to="/" />
-  }
+  const toggleDelete = () => setDeleteIsOpen(!deleteIsOpen);
 
   return(
     <div className="content">

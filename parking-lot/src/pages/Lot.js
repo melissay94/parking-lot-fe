@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
+import useRedirect from '../hooks/useRedirect';
 import EntryList from '../components/EntryList';
-import ConfirmDeleteModal from '../components/ConfirmDeleteModal';
-import LotModal from '../components/LotModal';
-import PostModal from '../components/PostModal';
+import ConfirmDeleteModal from '../components/modals/ConfirmDeleteModal';
+import LotModal from '../components/modals/LotModal';
+import PostModal from '../components/modals/PostModal';
 
 const exampleLot = {
   title: "Hello World",
@@ -26,15 +27,12 @@ const exampleLot = {
 
 export default function Lot({ isLoggedIn }) {
 
+  useRedirect(isLoggedIn, useHistory());
+
   const [showCode, setShowCode] = useState(false);
   const [deleteIsOpen, setDeleteIsOpen] = useState(false);
   const [editIsOpen, setEditIsOpen] = useState(false);
   const [addIsOpen, setAddIsOpen] = useState(false);
-
-  if (!isLoggedIn) {
-    return <Redirect to="/" />
-  }
-
 
   const revealCode = () => {
 

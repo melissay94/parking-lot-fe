@@ -1,32 +1,17 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
-import { Button, Spinner } from 'reactstrap';
-import gql from 'graphql-tag';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
 
+import HomeHeader from '../components/headers/HomeHeader';
 import LotList from '../components/LotList';
-import LotModal from '../components/LotModal';
-
-const GET_LOTS = gql`
-  query {
-    currentUser {
-      lots {
-        name
-        description
-      }
-    }
-  }
-`;
+import useRedirect from '../hooks/useRedirect';
+import useQueryUserLots from '../hooks/useQueryUserLots';
 
 export default function Home({ isLoggedIn }) {
+  
+  useRedirect(isLoggedIn, useHistory());
 
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
-  const { data, loading, error } = useQuery(GET_LOTS);
-
-  if (!isLoggedIn) {
-    return <Redirect to="/" />
-  }
+  const { data, loading, error } = useQueryUserLots();
 
   let list;
 
@@ -48,11 +33,7 @@ export default function Home({ isLoggedIn }) {
 
   return(
     <div className="content">
-      <div className="header">
-        <h1>My Lots</h1>
-        <Button onClick={toggle}>Create Lot</Button>
-        <LotModal isNew={true} isOpen={isOpen} toggle={toggle} />
-      </div>
+      <HomeHeader />
       {list}
     </div>
   );

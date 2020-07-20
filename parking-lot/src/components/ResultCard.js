@@ -6,7 +6,7 @@ import {
   Button
 } from 'reactstrap';
 
-import JoinLotModal from './JoinLotModal';
+import JoinLotModal from './modals/JoinLotModal';
 import "../styles/ListItem.css"
 
 export default function ResultCard({ result }) {
