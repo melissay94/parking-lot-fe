@@ -8,8 +8,10 @@ import useRedirect from '../hooks/useRedirect';
 import useQueryUserLots from '../hooks/useQueryUserLots';
 
 export default function Home({ isLoggedIn }) {
+
+  const shouldRedirect = isLoggedIn ? false : true;
   
-  useRedirect(isLoggedIn, useHistory());
+  useRedirect(shouldRedirect, isLoggedIn, useHistory());
 
   const { data, loading, error } = useQueryUserLots();
 

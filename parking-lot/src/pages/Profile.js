@@ -10,15 +10,16 @@ import "../styles/Profile.css";
 
 export default function Profile({ isLoggedIn }) {
 
-  useRedirect(isLoggedIn, useHistory());
+  const shouldRedirect = isLoggedIn ? false : true;
+  
+  useRedirect(shouldRedirect, isLoggedIn, useHistory());
 
   const [editUserIsOpen, setEditUserIsOpen] = useState(false);
-  const toggleEditUser = () => setEditUserIsOpen(!editUserIsOpen);
-
   const [editPasswordIsOpen, setEditPasswordIsOpen] = useState(false);
-  const toggleEditPassword = () => setEditPasswordIsOpen(!editPasswordIsOpen);
-
   const [deleteUserIsOpen, setDeleteUserIsOpen] = useState(false);
+  
+  const toggleEditUser = () => setEditUserIsOpen(!editUserIsOpen);
+  const toggleEditPassword = () => setEditPasswordIsOpen(!editPasswordIsOpen);
   const toggleDeleteUser = () => setDeleteUserIsOpen(!deleteUserIsOpen);
 
   const testUser = {

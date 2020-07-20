@@ -8,7 +8,9 @@ import "../styles/Landing.css";
 
 export default function Landing({ isLoggedIn }) {
 
-  useRedirect(isLoggedIn, useHistory());
+  const shouldRedirect = !isLoggedIn ? false : true;
+  
+  useRedirect(shouldRedirect, isLoggedIn, useHistory());
   
   return(
     <div id='landing' className="content">

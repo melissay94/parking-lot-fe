@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 
-const useRedirect = (isLoggedIn, history) => {
+const useRedirect = (shouldRedirect, isLoggedIn, history) => {
 
   useEffect(() => {
-    const path = isLoggedIn ? "/home" : "/";
-    history.push(path);
-  }, [isLoggedIn, history]);
+    if (shouldRedirect) {
+      const path = isLoggedIn ? "/home" : "/";
+      history.push(path);
+    }
+  }, [shouldRedirect, isLoggedIn, history]);
 }
 
 export default useRedirect;

@@ -14,7 +14,9 @@ const testResults = [{
  
 export default function Search({ isLoggedIn }) {
 
-  useRedirect(isLoggedIn, useHistory());
+  const shouldRedirect = isLoggedIn ? false : true;
+  
+  useRedirect(shouldRedirect, isLoggedIn, useHistory());
 
   const useQuery = () => new URLSearchParams(useLocation().search);
   const query = useQuery().get("query");

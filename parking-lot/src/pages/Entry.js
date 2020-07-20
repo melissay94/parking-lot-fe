@@ -25,8 +25,10 @@ const testEntry = {
 }
 
 export default function Entry({ isLoggedIn }) {
+
+  const shouldRedirect = isLoggedIn ? false : true;
   
-  useRedirect(isLoggedIn, useHistory());
+  useRedirect(shouldRedirect, isLoggedIn, useHistory());
 
   const [deleteIsOpen, setDeleteIsOpen] = useState(false);
   const [editIsOpen, setEditIsOpen] = useState(false);
