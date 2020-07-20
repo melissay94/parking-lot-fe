@@ -25,7 +25,7 @@ import gql from 'graphql-tag';
 import useSearch from '../hooks/Search';
 import "../styles/Navigation.css";
 
-export default function NavBar({ user }) {
+export default function NavBar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [, setQuery] = useState(null);
@@ -37,7 +37,7 @@ export default function NavBar({ user }) {
 
   const { input, handleInputChange } = useSearch(sendQuery);
 
-  function logout () {
+  function logout() {
     localStorage.clear();
     client.writeQuery({ 
       query: gql`
@@ -77,10 +77,10 @@ export default function NavBar({ user }) {
           <NavItem className="user">
             <Row>
               <Col sm={3}>
-                <img src={ user ? user.img : 'http://www.placekitten.com/g/50/50'} alt='user profile' />
+                <img src='http://www.placekitten.com/g/50/50' alt='user profile' />
               </Col>
               <Col sm={9} className="user-name">
-                <h4>{user ? user.name : "Current User"}</h4>
+                <h4>{localStorage.getItem('name') ? localStorage.getItem('name') : "Current User"}</h4>
               </Col>
             </Row>
           </NavItem>

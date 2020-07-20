@@ -8,6 +8,9 @@ const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
+      user {
+        name
+      }
     }
   }
 `;
@@ -24,6 +27,7 @@ export default function LoginForm() {
   const [login, { data, loading }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
       localStorage.setItem('token', login.token);
+      localStorage.setItem('name', login.user.name);
       client.writeQuery({ 
         query: gql`
           query getLoggedIn {

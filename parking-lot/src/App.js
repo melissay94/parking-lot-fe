@@ -18,7 +18,7 @@ function App() {
 
   const { data } = useQuery(GET_IS_LOGGEDIN);
 
-  const nav = data.isLoggedIn ? <NavBar user={null} /> : null;
+  const nav = data.isLoggedIn ? <NavBar /> : null;
   
   return (
     <Router>
