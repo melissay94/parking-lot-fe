@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
-import { Col, Button, Form, FormText, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Button, Form, FormText, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import gql from 'graphql-tag';
 
 const SIGNUP_USER = gql`
-  mutation signup($email: String!, $password: String!, $name: String!, $role: Integer!) {
-    signup(email: $email, password: $password, name: $name) {
+  mutation signup($email: String!, $password: String!, $name: String, $role: Int!) {
+    signup(email: $email, password: $password, name: $name, role: $role) {
       token
     }
   }
@@ -22,11 +22,11 @@ export default function SignupForm() {
   const [lastName, setLastName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState(-1);
+  const [role, setRole] = useState(0);
   const [confirmedAge, setConfirmedAge] = useState(false);
   const [message, setMessage] = useState(null);
 
-  const [signup, { data, loading }] = useMutation(SIGNUP_USER, { errorPolicy: 'all' }, {
+  const [signup, { data, loading }] = useMutation(SIGNUP_USER, {
     onCompleted({ signup }) {
       localStorage.setItem('token', signup.token);
       client.writeQuery({ 
@@ -39,14 +39,21 @@ export default function SignupForm() {
       });
     },
     onError({ graphQLErrors, networkError }) {
-      console.log("Error!")
-      if (graphQLErrors) {
+      if (graphQLErrors.length > 0) {
         setMessage(graphQLErrors[0].message);
       } else if(networkError) {
         setMessage(networkError.message || "Network Error");
+      } else {
+        setMessage("There was an error creating a user");
       }
     }
   });
+
+  useEffect(() => {
+    if (data) {
+      history.push("/home");
+    }
+  }, [data, history]);
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -84,11 +91,11 @@ export default function SignupForm() {
   }
 
   if (loading) {
-    setMessage("Creating Account...");
-  }
-
-  if (data) {
-    history.push("/home");
+    return(
+      <div>
+        <Spinner type="grow" color="light" />
+      </div>
+    );
   }
 
   return(
@@ -171,7 +178,7 @@ export default function SignupForm() {
         </Col>
       </FormGroup>
       <FormGroup check className="form-row check-row">
-        <Input type='checkbox' name='check' id='agree-check' onChange={e => setConfirmedAge(!confirmedAge)}/>
+        <Input type='checkbox' name='check' id='agree-check' onChange={e => setConfirmedAge(!confirmedAge)} />
         <Label for='agreeCheck' check>By clicking this box, you agree that you are at least 18 years of age. *</Label>
       </FormGroup>
       <div className="form-row">

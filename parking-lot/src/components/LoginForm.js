@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Button, Col, Form, FormGroup, Label, Input } from 'reactstrap';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button, Col, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -13,11 +13,14 @@ const LOGIN_USER = gql`
 `;
 
 export default function LoginForm() {
+
+  const client = useApolloClient();
+  const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState(null);
 
-  const client = useApolloClient();
   const [login, { data, loading }] = useMutation(LOGIN_USER, {
     onCompleted({ login }) {
       localStorage.setItem('token', login.token);
@@ -30,22 +33,46 @@ export default function LoginForm() {
         data: { isLoggedIn: true }
       });
     }, 
-    onError(error) {
-      setMessage(error.message);
+    onError({ graphQLErrors, networkError }) {
+      if (graphQLErrors.length > 0) {
+        setMessage(graphQLErrors[0].message);
+      } else if(networkError) {
+        setMessage(networkError.message || "Network Error");
+      } else {
+        setMessage("There was an error creating a user");
+      }
     }
   });
 
+  useEffect(() => {
+    if (data) {
+      history.push("/home");
+    }
+  }, [data, history]);
+
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (email.length === 0) {
+      setMessage("Please enter a email");
+      return;
+    }
+
+    if (password.length === 0) {
+      setMessage("Please enter a password");
+      return;
+    }
 
     login({ variables: { email, password }});
   }
 
   if (loading) {
-    setMessage("Loading...");
+    return(
+      <div>
+        <Spinner type="grow" color="light" />
+      </div>
+    )
   }
-
-  if (data) return <Redirect to="/home" />
 
   return (
     <Form className="landing-form" onSubmit={e => handleLogin(e)}>
@@ -77,7 +104,8 @@ export default function LoginForm() {
         </Col>
       </FormGroup>
       <div  className="form-row">
-        <h6>{message}</h6>
+        <Col sm={1}></Col>
+        <h6 className="error">{message}</h6>
         <Button>Login</Button>
       </div>
     </Form>

@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 const cache = new InMemoryCache();
 
 const link = new HttpLink({
-  uri: "localhost:4000/graphql"
+  uri: "http://localhost:4000/graphql"
 });
 
 const token = localStorage.getItem('token');
