@@ -1,7 +1,8 @@
 import React from 'react';
-import CommentCard from './CommentCard';
+import CommentCard from '../items/CommentCard';
 import { Container } from 'reactstrap';
-import "../styles/Comment.css";
+
+import "../../styles/Comment.css";
 
 export default function CommentList({ list }) {
   

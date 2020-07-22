@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import useRedirect from '../hooks/useRedirect';
 import LotHeader from '../components/headers/LotHeader';
-import EntryList from '../components/EntryList';
+import EntryList from '../components/lists/EntryList';
 
 const exampleLot = {
   name: "Hello World",

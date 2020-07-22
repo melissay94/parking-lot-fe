@@ -3,8 +3,8 @@ import { Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 
 import useRedirect from '../hooks/useRedirect';
-import CommentList from '../components/CommentList';
-import CommentForm from '../components/CommentForm';
+import CommentList from '../components/lists/CommentList';
+import CommentForm from '../components/forms/CommentForm';
 import ConfirmDeleteModel from '../components/modals/ConfirmDeleteModal';
 import PostModal from '../components/modals/PostModal';
 

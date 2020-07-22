@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Button, Col, Form, FormGroup, Label, Input, Spinner } from 'reactstrap';
 import { useApolloClient } from '@apollo/react-hooks';
 
-import useLogin from '../hooks/useLogin';
+import useLogin from '../../hooks/useLogin';
 
 export default function LoginForm() {
 

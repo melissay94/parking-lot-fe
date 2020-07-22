@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import EntryCard from './EntryCard';
+import EntryCard from '../items/EntryCard';
 
 export default function EntryList({ entryCards }) {
 

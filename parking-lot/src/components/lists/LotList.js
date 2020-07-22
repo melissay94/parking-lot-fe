@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import LotCard from './LotCard';
+import LotCard from '../items/LotCard';
 
 export default function LotList({ list }) {
 

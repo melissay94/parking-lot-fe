@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Spinner } from 'reactstrap';
 
 import HomeHeader from '../components/headers/HomeHeader';
-import LotList from '../components/LotList';
+import LotList from '../components/lists/LotList';
 import useRedirect from '../hooks/useRedirect';
 import useQueryUserLots from '../hooks/useQueryUserLots';
 

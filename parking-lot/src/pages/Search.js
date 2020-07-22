@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 
 import useRedirect from '../hooks/useRedirect';
-import ResultList from '../components/ResultsList';
+import ResultList from '../components/lists/ResultsList';
 
 const testResults = [{
   name: "sei-629"

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
 
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import LoginForm from './forms/LoginForm';
+import SignupForm from './forms/SignupForm';
 import "../styles/AccountForm.css";
 import "../styles/LandingForm.css";
 
