@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useApolloClient } from '@apollo/react-hooks';
 import { Col, Button, Form, FormText, FormGroup, Label, Input, Spinner } from 'reactstrap';
 
-import useSignup from '../../hooks/useSignup';
+import useSignup from '../../hooks/mutations/useSignup';
 
 export default function SignupForm() {
 

@@ -22,7 +22,7 @@ import  {
 } from 'reactstrap';
 import gql from 'graphql-tag';
 
-import useSearch from '../hooks/Search';
+import useSearch from '../hooks/useSearch';
 import "../styles/Navigation.css";
 
 export default function NavBar() {

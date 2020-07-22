@@ -5,7 +5,7 @@ import { Spinner } from 'reactstrap';
 import HomeHeader from '../components/headers/HomeHeader';
 import LotList from '../components/lists/LotList';
 import useRedirect from '../hooks/useRedirect';
-import useQueryUserLots from '../hooks/useQueryUserLots';
+import useQueryUserLots from '../hooks/queries/useQueryUserLots';
 
 export default function Home({ isLoggedIn }) {
 
