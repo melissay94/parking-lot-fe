@@ -6,6 +6,7 @@ const SIGNUP_USER = gql`
   mutation signup($email: String!, $password: String!, $name: String, $role: Int!) {
     signup(email: $email, password: $password, name: $name, role: $role) {
       token
+      expires
       user {
         name
       }
@@ -26,6 +27,7 @@ const useSignup = client => {
   const [signup, { data, loading }] = useMutation(SIGNUP_USER, {
     onCompleted({ signup }) {
       localStorage.setItem('token', signup.token);
+      localStorage.setItem('expiration', signup.expires);
       localStorage.setItem('name', signup.user.name);
       client.writeQuery({ 
         query: gql`

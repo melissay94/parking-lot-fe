@@ -11,6 +11,8 @@ const link = new HttpLink({
 });
 
 const token = localStorage.getItem('token');
+const expiration = localStorage.getItem('expiration');
+const today = new Date();
 
 const authLink = setContext((_, { headers }) => {
 
@@ -27,6 +29,12 @@ export const client = new ApolloClient({
   link: authLink.concat(link)
 });
 
+const isLoggedIn = token && expiration > today ? true : false;
+
+if (!isLoggedIn) {
+  localStorage.clear();
+}
+
 client.writeQuery({
   query: gql`
     query getLoggedIn {
@@ -34,6 +42,6 @@ client.writeQuery({
     }
   `,
   data: {
-    isLoggedIn: token ? true : false
+    isLoggedIn: isLoggedIn
   }
 });
