@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'reactstrap';
 
 import useRedirect from '../hooks/useRedirect';
-import EditUserModal from '../components/modals/EditUserModal';
-import EditPasswordModal from '../components/modals/EditPasswordModal';
-import DeleteUserModal from '../components/modals/DeleteUserModal';
+import ProfileHeader from '../components/headers/ProfileHeader';
+import ProfileControls from '../components/ProfileControls';
 import "../styles/Profile.css";
 
 export default function Profile({ isLoggedIn }) {
@@ -14,42 +12,15 @@ export default function Profile({ isLoggedIn }) {
   
   useRedirect(shouldRedirect, isLoggedIn, useHistory());
 
-  const [editUserIsOpen, setEditUserIsOpen] = useState(false);
-  const [editPasswordIsOpen, setEditPasswordIsOpen] = useState(false);
-  const [deleteUserIsOpen, setDeleteUserIsOpen] = useState(false);
-  
-  const toggleEditUser = () => setEditUserIsOpen(!editUserIsOpen);
-  const toggleEditPassword = () => setEditPasswordIsOpen(!editPasswordIsOpen);
-  const toggleDeleteUser = () => setDeleteUserIsOpen(!deleteUserIsOpen);
-
-  const testUser = {
-    name: "Test User",
-    email: "test@test.co",
-    lotCount: 2,
-    entryCount: 5,
-    commentCount: 10
-  }
-
   return(
     <div className="content">
-      <div className="header">
-        <h1>{testUser.name}</h1>
-        <h3>{testUser.email}</h3>
-      </div>
+      <ProfileHeader user={ testUser } />
       <div className="stats">
         <h6>{testUser.lotCount} Lots</h6>
         <h6>{testUser.entryCount} Entries</h6>
         <h6>{testUser.commentCount} Comments</h6>
       </div>
-      <div className="profile-controls">
-        <Button onClick={toggleEditUser}>Edit User</Button>
-        <EditUserModal isOpen={editUserIsOpen} toggle={toggleEditUser} />
-        <Button onClick={toggleEditPassword}>Change Password</Button>
-        <EditPasswordModal isOpen={editPasswordIsOpen} toggle={toggleEditPassword} />
-        <Button onClick={toggleDeleteUser}>Delete Profile</Button>
-        <DeleteUserModal isOpen={deleteUserIsOpen} toggle={toggleDeleteUser} />
-        <h6>Warning! This cannot be undone!</h6>
-      </div>
+      <ProfileControls />
     </div>
   );
 }
