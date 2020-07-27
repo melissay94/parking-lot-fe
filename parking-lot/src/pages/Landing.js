@@ -1,24 +1,20 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
-import { Jumbotron, Container } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 
-import AccountForms from '../components/AccountForms';
+import useRedirect from '../hooks/useRedirect';
+import LandingHeader from '../components/headers/LandingHeader';
+import AccountForms from '../components/AccountFormTabs';
 import "../styles/Landing.css";
 
 export default function Landing({ isLoggedIn }) {
 
-  if (isLoggedIn) {
-    return <Redirect to="/home" />
-  }
-
+  const shouldRedirect = !isLoggedIn ? false : true;
+  
+  useRedirect(shouldRedirect, isLoggedIn, useHistory());
+  
   return(
     <div id='landing' className="content">
-      <Jumbotron fluid>
-        <Container fluid>
-          <h1 className='display-3'>Parking Lot</h1>
-          <p className='lead'>A collaborative question answering experience for classes everywhere.</p>
-        </Container>
-      </Jumbotron>
+      <LandingHeader />
       <AccountForms className="landing-forms" />
     </div>
   );

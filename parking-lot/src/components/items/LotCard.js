@@ -6,13 +6,13 @@ import {
   CardText,
   Button
 } from 'reactstrap';
-import "../styles/ListItem.css";
+import "../../styles/ListItem.css";
 
 export default function LotCard({ card }) {
   
   return (
     <Card body className="list-item">
-      <CardTitle>{card ? card.title : "Title"}</CardTitle>
+      <CardTitle>{card ? card.name : "Lot"}</CardTitle>
       <CardText>{card ? card.description : ""}</CardText>
       <Button
         tag={Link}

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import EntryCard from './EntryCard';
+import LotCard from '../items/LotCard';
 
-export default function EntryList({ entryCards }) {
+export default function LotList({ list }) {
 
   return(
     <Container>
       <Row>
-        {entryCards.map(card => {
+        {list.map(card => {
           return (
             <Col md={4} sm={6} xs={12}>
-              <EntryCard card={card}/>
+              <LotCard card={card}/>
             </Col>
           );
         })}

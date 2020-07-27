@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import ResultCard from './ResultCard';
+import ResultCard from '../items/ResultCard';
 
 export default function ResultsList({ results }) {
 

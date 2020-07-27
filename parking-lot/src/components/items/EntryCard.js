@@ -6,7 +6,7 @@ import {
   CardText,
   Button
 } from 'reactstrap';
-import "../styles/ListItem.css"
+import "../../styles/ListItem.css"
 
 export default function EntryCard({ card }) {
   
